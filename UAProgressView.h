@@ -31,6 +31,9 @@
  */
 @property (nonatomic, copy) void (^progressChangedBlock)(UAProgressView *progressView, CGFloat progress);
 
+@property (nonatomic, copy) void (^progressAnimationDoneBlock)(UAProgressView *progressView, CGFloat progress);
+
+
 /**
  *  The view in the center of the progress view.
  *

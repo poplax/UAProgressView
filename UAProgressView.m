@@ -59,6 +59,7 @@ NSString * const UAProgressViewProgressAnimationKey = @"UAProgressViewProgressAn
 	self.fillChangedBlock = nil;
 	self.didSelectBlock	= nil;
 	self.progressChangedBlock = nil;
+    self.progressAnimationDoneBlock = nil;
 	self.centralView = nil;
 	
 	_fillOnTouch = YES;
@@ -266,6 +267,12 @@ NSString * const UAProgressViewProgressAnimationKey = @"UAProgressViewProgressAn
     [self.progressView updateProgress:_progress];
     [self.valueLabelUpdateTimer invalidate];
     self.valueLabelUpdateTimer = nil;
+
+    if (_progressAnimationDoneBlock) {
+
+        self.progress = 0;
+        _progressAnimationDoneBlock(self, _progress);
+    }
 }
 
 #pragma mark - Gesture Recognizers
